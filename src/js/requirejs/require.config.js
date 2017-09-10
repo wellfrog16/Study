@@ -64,6 +64,9 @@
         'jquery.hammer': 'lib/jquery/jquery.hammer',
         'hammer': 'lib/jquery/hammer.min',
 
+        'frameplayer' : 'lib/helper/frameplayer',
+        'tools' : 'lib/helper/tools',
+
         'swiper': 'lib/swiper/swiper-3.4.2.jquery.min',
 
         'bootstrap': 'lib/bootstrap/bootstrap-3.3.7.min',

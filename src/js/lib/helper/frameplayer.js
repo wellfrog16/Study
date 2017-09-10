@@ -1,6 +1,6 @@
 'use strict';
 
-define(function () {
+define(['jquery'], function ($) {
 
     /************************************************************
     { 
@@ -18,16 +18,39 @@ define(function () {
         autoSize: 自适应，默认true
     }
     ***********************************************************/
-    var self = function self(args) {
-        var scale = args.scale || 1,
-            baseScale = document.documentElement.clientWidth / (args.baseWidth || 640);
+    var self = function self(options) {
+        var args = {
+            target: null,
+            baseWidth: 640,
+            scale: 1,
+            total: 0,
+            row: 0,
+            fps: 0,
+            loop: false,
+            loopDelay: 0,
+            loopTimes: -1,
+            finishedCallback: function finishedCallback() {},
+            loopCallback: function loopCallback() {},
+            autosize: true
+        };
 
-        args.width = args.width || args.target.width();
-        args.height = args.height || args.target.height();
-        args.loopDelay = args.loopDelay || 0;
-        args.loopTimes = args.loopTimes || -1;
-        args.autoSize = args.autoSize == undefined ? true : args.autoSize;
+        $.extend(args, options);
 
+        args.width = args.target.width();
+        args.height = args.target.height();
+        console.log(args);
+
+        // var scale = args.scale || 1,
+        //     baseScale = document.documentElement.clientWidth / (args.baseWidth || 640);
+
+        // args.width = args.width || args.target.width();
+        // args.height = args.height || args.target.height();
+        // args.loopDelay = args.loopDelay || 0;
+        // args.loopTimes = args.loopTimes || -1;
+        // args.autoSize = args.autoSize == undefined ? true : args.autoSize;
+
+        var scale = args.scale,
+            baseScale = document.documentElement.clientWidth / args.baseWidth;
         // 如果非自适应，将基础缩放定为1
         if (!args.autoSize) {
             baseScale = 1;
