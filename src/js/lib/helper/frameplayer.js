@@ -1,37 +1,20 @@
 'use strict';
 
 define(['jquery'], function ($) {
-
-    /************************************************************
-    { 
-        target: 对象,
-        total : 总帧数,
-        row : 一行几个,
-        fps: 每秒帧数,
-        scale: 缩放倍数，默认  1
-        baseWidth : 640
-        loop : 是否循环,
-        loopDelay : 循环间隔帧数，默认0,
-        loopTimes : 循环次数，默认 无限,
-        finishedCallback: 回调,
-        loopCallback: 循环回调,
-        autoSize: 自适应，默认true
-    }
-    ***********************************************************/
     var self = function self(options) {
         var args = {
-            target: null,
-            baseWidth: 640,
-            scale: 1,
-            total: 0,
-            row: 0,
-            fps: 0,
-            loop: false,
-            loopDelay: 0,
-            loopTimes: -1,
-            finishedCallback: function finishedCallback() {},
-            loopCallback: function loopCallback() {},
-            autosize: true
+            target: null, // 对象
+            baseWidth: 640, //
+            scale: 1, // 缩放倍数
+            total: 0, // 总帧数
+            row: 0, // 一行几帧
+            fps: 0, // fps
+            loop: false, // 是否循环
+            loopDelay: 0, // 循环间隔帧数
+            loopTimes: -1, // 循环次数，-1为无限
+            finishedCallback: null, // 回调
+            loopCallback: null, // 循环回调
+            autosize: true // 自适应
         };
 
         $.extend(args, options);
@@ -39,15 +22,6 @@ define(['jquery'], function ($) {
         args.width = args.target.width();
         args.height = args.target.height();
         console.log(args);
-
-        // var scale = args.scale || 1,
-        //     baseScale = document.documentElement.clientWidth / (args.baseWidth || 640);
-
-        // args.width = args.width || args.target.width();
-        // args.height = args.height || args.target.height();
-        // args.loopDelay = args.loopDelay || 0;
-        // args.loopTimes = args.loopTimes || -1;
-        // args.autoSize = args.autoSize == undefined ? true : args.autoSize;
 
         var scale = args.scale,
             baseScale = document.documentElement.clientWidth / args.baseWidth;
