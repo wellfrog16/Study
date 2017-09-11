@@ -21,16 +21,9 @@ define(['jquery'], function ($) {
 
         args.width = args.target.width();
         args.height = args.target.height();
-        console.log(args);
 
         var scale = args.scale,
-            baseScale = document.documentElement.clientWidth / args.baseWidth;
-        // 如果非自适应，将基础缩放定为1
-        if (!args.autoSize) {
-            baseScale = 1;
-        }
-
-        //if (args.autoSize)
+            baseScale = args.autosize ? document.documentElement.clientWidth / args.baseWidth : 1;
 
         // 内部变量
         args.times = args.times || 0;
@@ -47,6 +40,7 @@ define(['jquery'], function ($) {
 
             //if (num++ < 0) { console.log(num); return }
 
+            // 完成循环
             if (num++ >= args.total - 1) {
 
                 // 有循环，且有循环回调，优先执行

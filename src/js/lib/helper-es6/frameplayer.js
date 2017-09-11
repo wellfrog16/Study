@@ -33,10 +33,11 @@
         args.target.show();
 
         var num = 0, delay = args.loopDelay;
-        var timer = setInterval(function () {
+        var timer = setInterval(() => {
 
             //if (num++ < 0) { console.log(num); return }
 
+            // 完成循环
             if (num++ >= args.total - 1) {
 
                 // 有循环，且有循环回调，优先执行
